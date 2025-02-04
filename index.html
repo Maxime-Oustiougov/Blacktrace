@@ -84,6 +84,7 @@
             const query = searchInput.value.trim().toLowerCase();
             let result = '';
 
+            // Information for Maxime OUSTIOUGOV
             if (query === 'maxime oustiougov') {
                 result = `
                     <div class="card">
@@ -96,7 +97,9 @@
                         <p><strong>Position actuelle :</strong> 4 Impasse du Gour Bleu</p>
                     </div>
                 `;
-            } else if (query === 'léandre valat') {
+            } 
+            // Information for Léandre VALAT
+            else if (query === 'léandre valat') {
                 result = `
                     <div class="card">
                         <h2>Léandre VALAT</h2>
@@ -108,7 +111,20 @@
                         <p><strong>Position actuelle :</strong> 4 Impasse de la Forêt</p>
                     </div>
                 `;
-            } else if (query.length > 0) {
+            }
+            // Information for Safa BOUGHANDJOUR
+            else if (query === 'safa boughandjour') {
+                result = `
+                    <div class="card">
+                        <h2>Safa BOUGHANDJOUR</h2>
+                        <p><strong>IP :</strong> Locked</p>
+                        <p><strong>Adresse :</strong> Locked</p>
+                        <p><strong>Locked</strong></p>
+                    </div>
+                `;
+            } 
+            // Default message if no information found
+            else if (query.length > 0) {
                 result = '<p>Aucune information trouvée.</p>';
             }
 
