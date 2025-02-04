@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blacktrace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: #f5f5f5;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .search-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .search-box input {
+            width: 300px;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: #444;
+            color: #f5f5f5;
+            outline: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .search-box input:focus {
+            width: 320px;
+            background: #555;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .result.visible {
+            opacity: 1;
+        }
+        .card {
+            border: 1px solid #555;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            background: #2a2a2a;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card h2 {
+            margin: 0 0 10px 0;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Blacktrace</h1>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Rechercher...">
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const resultDiv = document.getElementById('result');
+
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.trim().toLowerCase();
+            let result = '';
+
+            if (query === 'maxime oustiougov') {
+                result = `
+                    <div class="card">
+                        <h2>Maxime OUSTIOUGOV</h2>
+                        <p><strong>IP :</strong> 72.14.201.125</p>
+                        <p><strong>Adresse :</strong> 4 Impasse du Gour Bleu, 30100 Alès</p>
+                        <p><strong>Navigateur :</strong> Google Chrome</p>
+                        <p><strong>Système :</strong> Android 15.9</p>
+                        <p><strong>Batterie :</strong> 72%</p>
+                        <p><strong>Position actuelle :</strong> 4 Impasse du Gour Bleu</p>
+                    </div>
+                `;
+            } else if (query === 'léandre valat') {
+                result = `
+                    <div class="card">
+                        <h2>Léandre VALAT</h2>
+                        <p><strong>IP :</strong> 92.161.227.67</p>
+                        <p><strong>Adresse :</strong> 1 Rue du Foiral</p>
+                        <p><strong>Navigateur :</strong> Google Chrome</p>
+                        <p><strong>Système :</strong> Android 15.8</p>
+                        <p><strong>Batterie :</strong> 53%</p>
+                        <p><strong>Position actuelle :</strong> 4 Impasse de la Forêt</p>
+                    </div>
+                `;
+            } else if (query.length > 0) {
+                result = '<p>Aucune information trouvée.</p>';
+            }
+
+            resultDiv.innerHTML = result;
+            if (result) {
+                resultDiv.classList.add('visible');
+            } else {
+                resultDiv.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
